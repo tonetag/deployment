@@ -1,17 +1,26 @@
 ---
 - name: Import K3S playbook
+  tags: k3s
   ansible.builtin.import_playbook: 01-k3s.yml
 
 - name: Import ArgoCD playbook
+  tags: argocd
   ansible.builtin.import_playbook: 02-argocd.yml
 
 - name: Import ArgoCD ksops playbook
+  tags: argocd-ksops
   ansible.builtin.import_playbook: 03-argocd-ksops.yml
 
 - name: Add ArgoCD project manifest
-  kubernetes.core.k8s:
-    definition: "{{ lookup('file', '../argocd/projects/tonetag.yaml') }}"
-    state: present
-    namespace: argocd
+  tags: argocd-project
+  hosts: dev-server
+  tasks:
+  - name: Add ArgoCD project manifest
+    kubernetes.core.k8s:
+      definition: "{{ lookup('file', '../../argocd/projects/tonetag.yaml') }}"
+      state: present
+      namespace: argocd
+    environment:
+      KUBECONFIG: "{{ kubeconfig | default('~/.kube/config') }}"
 
 ...

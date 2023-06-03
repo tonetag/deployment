@@ -1,8 +1,8 @@
 ---
-- name: Set up ArgoCD
-  hosts: kubernetes
+- name: Set up ArgoCD KSOPS
+  hosts: dev-server
   tasks:
-    - name: Set up ArgoCD
+    - name: Set up ArgoCD KSOPS
       environment:
         KUBECONFIG: "{{ kubeconfig | default('~/.kube/config') }}"
       block:
