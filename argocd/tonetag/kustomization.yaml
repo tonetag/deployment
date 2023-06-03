@@ -1,0 +1,40 @@
+helmCharts:
+- name: cert-manager
+  releaseName: cert-manager
+  version: v1.12.0
+  repo: https://charts.jetstack.io
+  includeCRDs: true
+  valuesInline:
+    installCRDs: true
+
+- name: tonetag
+  releaseName: tonetag
+  version: "1.0.3"
+  repo: https://tonetag/github.io/charts
+  includeCRDs: false
+  valuesInline:
+    replicaCount: 5
+    
+    ingress:
+      enabled: true
+      className: "helm-traefik-ingress"
+      annotations:
+        kubernetes.io/tls-acme: "false"
+        traefik.ingress.kubernetes.io/router.entrypoints: "web, websecure"
+        traefik.ingress.kubernetes.io/router.tls: "true"
+      hosts:
+        - host: tonetag.is
+          paths:
+            - path: /
+              pathType: Prefix
+      tls:
+      - secretName: tonetag-cert
+        hosts:
+          - tonetag.is
+
+generators:
+  - ./kustomize-secret-generator.yaml
+
+resources:
+  - ./cert-tonetag.yaml
+  - ./issuer-tonetag.yaml

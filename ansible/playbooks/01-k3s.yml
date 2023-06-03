@@ -1,0 +1,7 @@
+---
+- name: Deploy K3S
+  hosts: all
+  roles:
+    - { role: "diademiemi.k3s", tags: ["initial", "k3s"] }
+
+...

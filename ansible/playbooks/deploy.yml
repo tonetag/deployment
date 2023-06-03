@@ -1,0 +1,17 @@
+---
+- name: Import K3S playbook
+  ansible.builtin.import_playbook: 01-k3s.yml
+
+- name: Import ArgoCD playbook
+  ansible.builtin.import_playbook: 02-argocd.yml
+
+- name: Import ArgoCD ksops playbook
+  ansible.builtin.import_playbook: 03-argocd-ksops.yml
+
+- name: Add ArgoCD project manifest
+  kubernetes.core.k8s:
+    definition: "{{ lookup('file', '../argocd/projects/tonetag.yaml') }}"
+    state: present
+    namespace: argocd
+
+...

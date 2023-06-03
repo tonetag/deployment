@@ -1,0 +1,16 @@
+apiVersion: cert-manager.io/v1
+kind: Issuer
+metadata:
+  name: tonetag-issuer
+spec:
+  acme:
+    email: "emilia@diademiemi.me"
+    server: https://acme-v02.api.letsencrypt.org/directory
+    privateKeySecretRef:
+      name: letsencrypt-prod-tonetag
+    solvers:
+    - dns01:
+        cloudflare:
+          apiTokenSecretRef:
+            name: cloudflare-api-token-secret
+            key: api-token
