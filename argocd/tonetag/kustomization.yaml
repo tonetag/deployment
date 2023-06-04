@@ -31,7 +31,7 @@ helmCharts:
       - secretName: tonetag-cert
         hosts:
           - "tonetag.is"
-          - "*.tonetag.is"
+          - "dev.tonetag.is"
 
 generators:
   - ./kustomize-secret-generator.yaml
