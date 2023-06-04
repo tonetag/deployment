@@ -10,7 +10,7 @@ helmCharts:
 - name: tonetag
   releaseName: tonetag
   version: "1.0.3"
-  repo: https://tonetag/github.io/charts
+  repo: https://tonetag.github.io/charts
   includeCRDs: false
   valuesInline:
     replicaCount: 5
