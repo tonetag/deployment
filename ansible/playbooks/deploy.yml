@@ -3,6 +3,16 @@
   tags: k3s
   ansible.builtin.import_playbook: 01-k3s.yml
 
+- name: Wait for K3S to be ready
+  hosts: dev-server
+  environment:
+    KUBECONFIG: "{{ kubeconfig | default('~/.kube/config') }}"
+  tasks:
+    - name: Get namespaces
+      kubernetes.core.k8s_info:
+        kind: Namespace
+      register: namespaces
+
 - name: Import ArgoCD playbook
   tags: argocd
   ansible.builtin.import_playbook: 02-argocd.yml
