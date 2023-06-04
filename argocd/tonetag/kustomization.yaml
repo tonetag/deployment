@@ -23,14 +23,15 @@ helmCharts:
         traefik.ingress.kubernetes.io/router.entrypoints: "web, websecure"
         traefik.ingress.kubernetes.io/router.tls: "true"
       hosts:
-        - host: tonetag.is
+        - host: ""
           paths:
             - path: /
               pathType: Prefix
       tls:
       - secretName: tonetag-cert
         hosts:
-          - tonetag.is
+          - "tonetag.is"
+          - "*.tonetag.is"
 
 generators:
   - ./kustomize-secret-generator.yaml
