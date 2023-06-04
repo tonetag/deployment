@@ -17,7 +17,7 @@ helmCharts:
     
     ingress:
       enabled: true
-      className: "helm-traefik-ingress"
+      className: "traefik"
       annotations:
         kubernetes.io/tls-acme: "false"
         traefik.ingress.kubernetes.io/router.entrypoints: "web, websecure"
