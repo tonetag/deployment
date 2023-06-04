@@ -9,7 +9,7 @@ helmCharts:
 
 - name: tonetag
   releaseName: tonetag
-  version: "1.0.3"
+  version: "2.0.0"
   repo: https://tonetag.github.io/charts
   includeCRDs: false
   valuesInline:
