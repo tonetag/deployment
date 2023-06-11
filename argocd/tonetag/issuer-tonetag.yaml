@@ -4,7 +4,7 @@ metadata:
   name: tonetag-issuer
 spec:
   acme:
-    email: "emilia@diademiemi.me"
+    email: "tonetag-letsencrypt.com@diademiemi.me"
     server: https://acme-v02.api.letsencrypt.org/directory
     privateKeySecretRef:
       name: letsencrypt-prod-tonetag

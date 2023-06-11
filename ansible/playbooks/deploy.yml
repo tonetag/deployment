@@ -27,10 +27,12 @@
   tasks:
   - name: Add ArgoCD project manifest
     kubernetes.core.k8s:
-      definition: "{{ lookup('file', '../../argocd/projects/tonetag.yaml') }}"
+      definition: "{{ lookup('file', '../../argocd/projects/{{ item }}') }}"
       state: present
       namespace: argocd
     environment:
       KUBECONFIG: "{{ kubeconfig | default('~/.kube/config') }}"
-
+    loop:
+      - tonetag.yaml
+      - cluster.yaml
 ...

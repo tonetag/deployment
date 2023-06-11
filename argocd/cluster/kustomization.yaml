@@ -1,0 +1,9 @@
+helmCharts:
+- name: cert-manager
+  releaseName: cert-manager
+  namespace: cert-manager
+  version: v1.12.0
+  repo: https://charts.jetstack.io
+  includeCRDs: false
+  valuesInline:
+    installCRDs: true

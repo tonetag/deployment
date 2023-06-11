@@ -1,12 +1,4 @@
 helmCharts:
-- name: cert-manager
-  releaseName: cert-manager
-  version: v1.12.0
-  repo: https://charts.jetstack.io
-  includeCRDs: false
-  valuesInline:
-    installCRDs: true
-
 - name: tonetag
   releaseName: tonetag
   version: "2.0.0"
