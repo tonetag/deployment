@@ -15,7 +15,11 @@ helmCharts:
         traefik.ingress.kubernetes.io/router.entrypoints: "web, websecure"
         traefik.ingress.kubernetes.io/router.tls: "true"
       hosts:
-        - host: ""
+        - host: "tonetag.is"
+          paths:
+            - path: /
+              pathType: Prefix
+        - host: "dev.tonetag.is"
           paths:
             - path: /
               pathType: Prefix
