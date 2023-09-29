@@ -9,12 +9,13 @@ helmCharts:
     
     ingress:
       enabled: true
-      className: "traefik"
+      className: "nginx"
       annotations:
         kubernetes.io/tls-acme: "false"
-        traefik.ingress.kubernetes.io/router.entrypoints: "web, websecure"
-        traefik.ingress.kubernetes.io/router.tls: "true"
-        traefik.ingress.kubernetes.io/router.middlewares: tonetag-https-redirect@kubernetescrd
+        ingress.kubernetes.io/force-ssl-redirect: "true"
+        # traefik.ingress.kubernetes.io/router.entrypoints: "web, websecure"
+        # traefik.ingress.kubernetes.io/router.tls: "true"
+        # traefik.ingress.kubernetes.io/router.middlewares: tonetag-https-redirect@kubernetescrd
       hosts:
         - host: "tonetag.is"
           paths:
