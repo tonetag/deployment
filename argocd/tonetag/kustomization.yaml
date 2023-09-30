@@ -11,11 +11,8 @@ helmCharts:
       enabled: true
       className: "nginx"
       annotations:
-        kubernetes.io/tls-acme: "false"
-        ingress.kubernetes.io/force-ssl-redirect: "true"
-        # traefik.ingress.kubernetes.io/router.entrypoints: "web, websecure"
-        # traefik.ingress.kubernetes.io/router.tls: "true"
-        # traefik.ingress.kubernetes.io/router.middlewares: tonetag-https-redirect@kubernetescrd
+        nginx.ingress.kubernetes.io/force-ssl-redirect: "false"  # Cloudflare handles this
+        nginx.ingress.kubernetes.io/ssl-redirect: "false"  # Cloudflare handles this
       hosts:
         - host: "tonetag.is"
           paths:
