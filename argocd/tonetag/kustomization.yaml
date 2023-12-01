@@ -6,6 +6,7 @@ helmCharts:
   includeCRDs: false
   valuesInline:
     image:
+      tag: "1.0.4"
       pullPolicy: always
 
     replicaCount: 5
