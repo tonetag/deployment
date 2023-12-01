@@ -5,6 +5,9 @@ helmCharts:
   repo: https://tonetag.github.io/charts
   includeCRDs: false
   valuesInline:
+    image:
+      pullPolicy: always
+
     replicaCount: 5
     
     ingress:
